@@ -8,6 +8,13 @@
   <title></title>
 </head>
 <body>
-<button>pay</button>
+<button id="btn-pay">pay</button>
+
+<script>
+  var btnPay = document.getElementById('btn-pay')
+  btnPay.addEventListener('click', function () {
+    location.href = '/alipay/pay'
+  })
+</script>
 </body>
 </html>

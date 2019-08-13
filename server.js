@@ -1,12 +1,13 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const alipay = require('./service/alipay');
 const config = require('./service/config');
 
 const app = express();
 app.use(cors());
 
-// app.use('/oauth', oauth);
+app.use('/alipay', alipay);
 
 app.get('/', function (req, res) {
   res.sendFile(path.resolve(__dirname, './index.html'));

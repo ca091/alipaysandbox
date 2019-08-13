@@ -1,11 +1,12 @@
 const AlipayFormData = require('alipay-sdk/lib/form.js').default
 const Utils = require('./utils.js')
+const Config = require('./config.js')
 
 async function payForm() {
   const alipaySdk = Utils.getAlipaySdkInstance()
   const formData = new AlipayFormData();
 
-  formData.addField('notifyUrl', 'http://www.com/notify');
+  formData.addField('notifyUrl', Config.notifyUrl);
   formData.addField('bizContent', {
     outTradeNo: '1565676326609',
     productCode: 'FAST_INSTANT_TRADE_PAY',
@@ -20,8 +21,9 @@ async function payForm() {
       { formData: formData },
   );
 
-// result 为 form 表单
+  // result 为 form 表单
   console.log(result);
+  return result
 }
 
 async function payLink() {
@@ -30,7 +32,7 @@ async function payLink() {
   // 调用 setMethod 并传入 get，会返回可以跳转到支付页面的 url
   formData.setMethod('get');
 
-  formData.addField('notifyUrl', 'http://www.com/notify');
+  formData.addField('notifyUrl', Config.notifyUrl);
   formData.addField('bizContent', {
     outTradeNo: '1565676326609',
     productCode: 'FAST_INSTANT_TRADE_PAY',
@@ -45,8 +47,9 @@ async function payLink() {
       { formData: formData },
   );
 
-// result 为可以跳转到支付链接的 url
+  // result 为可以跳转到支付链接的 url
   console.log(result);
+  return result
 }
 
 module.exports = {
