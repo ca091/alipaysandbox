@@ -13,6 +13,7 @@ async function payForm() {
     totalAmount: '0.01',
     subject: '商品',
     body: '商品详情',
+    qr_pay_mode: 4
   });
 
   const result = await alipaySdk.exec(
